@@ -1,5 +1,82 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    background-image: url('../assets/background2.jpg');
+    background-image: url('../assets/background3.jpg');
     background-color: orange;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 0px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.hero {
+    font-size: xx-large;
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+.semi {
+    font-size: 60px;
+    color: rgb(114, 114, 114);
+}
+
+.main {
+    margin-top: -10%;
+    font-size: 90px;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(194, 201, 207, 0.25);
+    height: 400px;
+    width: 600px;
+    border: 0px solid;
+    justify-content: center;
+    gap: 50px;
+    border-radius: 1%;
+    padding-bottom: 50px;
+    box-shadow: 2.5px 4px 10px -1px rgba(119, 136, 153, 0.48);
+}
+
+#google {
+    display: flex;
+    margin-top: -50px;
+    background-color: #FFFFFF;
+    width: 200px;
+    height: 50px;
+    padding: 15px;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    gap: 24px;
+    border: 3px solid white;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px 1px rgba(119, 136, 153, 0.48);
+    transition: box-shadow 0.25s;
+}
+
+#google:hover {
+    box-shadow: 3px 3px 15px 2px rgba(67, 67, 67, 0.48);
+}
+
+#google>img {
+    width: 18px;
+    height: 18px;
+}
+
+#google>p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgb(114, 114, 114);
 }

@@ -11,4 +11,11 @@ router.get('/home', auth.ensureAuthenticated, (req, res) => {
     res.send('Homepage');
 })
 
+router.post('/logout', auth.ensureAuthenticated, (req, res, next) => {
+    req.logOut((err) => {
+        if (err) return next(err);
+        res.redirect('/');
+    })
+})
+
 export default router;

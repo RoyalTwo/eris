@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../login/login.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="../login/login.css"> 
+    <script src="login.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <title>Login</title>
 </head>
 <body>
-    <p>Login</p>
-    <a id="login" href="/login/auth/google">Login with Google</a>
+    <!--<p>Login</p>
+    <a id="login" href="/login/auth/google">Login with Google</a> -->
+    <h1 class="hero main">Eris</h2>
+    <div id="container" onclick="sendLogin()">
+        <h2 class="hero semi">Sign in</h3>
+        <a id="google" href="/login/auth/google">
+            <img src="../assets/g-logo.png">
+            <p>Sign in with Google</p>
+        </a>
+    </div>
 </body>
 </html>
