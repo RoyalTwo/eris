@@ -8,7 +8,7 @@ router.get('/', auth.ensureAuthenticated, (req, res) => {
 })
 
 router.get('/home', auth.ensureAuthenticated, (req, res) => {
-    res.send('Homepage');
+    res.send('Home Page');
 })
 
 router.post('/logout', auth.ensureAuthenticated, (req, res, next) => {

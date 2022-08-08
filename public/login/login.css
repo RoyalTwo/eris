@@ -6,7 +6,7 @@
 
 body {
     background-image: url('../assets/background3.jpg');
-    background-color: orange;
+    background-color: aliceblue;
     color: white;
     display: flex;
     justify-content: center;
@@ -21,17 +21,17 @@ body {
     font-weight: 500;
     font-size: 90px;
     margin-top: -5px;
-    color: rgba(144, 63, 63, 0.75);
+    color: rgba(100, 44, 44, 0.75);
 
 }
 
 .container {
     display: flex;
-    background-color: rgba(229, 198, 173, 0.6);
+    background-color: rgba(249, 211, 180, 0.3);
     height: 400px;
     width: 500px;
     border: 0px solid;
-    border-radius: 2%;
+    border-radius: 3%;
     box-shadow: 2.5px 4px 10px -1px rgba(154, 140, 128, 0.48);
     justify-content: center;
     align-items: center;
