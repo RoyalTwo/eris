@@ -24,16 +24,12 @@ body {
 }
 
 .semi {
-    font-size: 60px;
-    color: rgb(114, 114, 114);
-}
-
-.main {
-    margin-top: -10%;
-    font-size: 90px;
+    font-size: 80px;
+    color: rgba(34, 34, 34, 0.75);
 }
 
 #container {
+    margin-top: -10%;
     display: flex;
     align-items: center;
     flex-direction: column;
