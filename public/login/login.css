@@ -18,13 +18,9 @@ body {
 }
 
 .hero {
-    font-size: xx-large;
-    color: whitesmoke;
     font-weight: 500;
-}
-
-.semi {
-    font-size: 80px;
+    font-size: 90px;
+    margin-top: -5px;
     color: rgba(34, 34, 34, 0.75);
 }
 
@@ -33,13 +29,13 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: rgba(194, 201, 207, 0.25);
+    background-color: rgba(194, 201, 207, 0.4);
     height: 400px;
-    width: 600px;
+    width: 500px;
     border: 0px solid;
     justify-content: center;
-    gap: 50px;
-    border-radius: 1%;
+    gap: 20px;
+    border-radius: 2%;
     padding-bottom: 50px;
     box-shadow: 2.5px 4px 10px -1px rgba(119, 136, 153, 0.48);
 }
