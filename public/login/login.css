@@ -24,20 +24,35 @@ body {
     color: rgba(34, 34, 34, 0.75);
 }
 
-#container {
-    margin-top: -10%;
+.container {
     display: flex;
-    align-items: center;
-    flex-direction: column;
     background-color: rgba(194, 201, 207, 0.4);
     height: 400px;
     width: 500px;
     border: 0px solid;
-    justify-content: center;
-    gap: 20px;
     border-radius: 2%;
-    padding-bottom: 50px;
     box-shadow: 2.5px 4px 10px -1px rgba(119, 136, 153, 0.48);
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    flex-direction: column;
+    padding-bottom: 50px;
+    gap: 20px;
+}
+
+.credits {
+    height: 50px;
+    width: 75px;
+    margin-top: 50px;
+    border-radius: 10%;
+}
+
+.credits>a>img {
+    height: 25px;
+    width: 25px;
+    margin-bottom: -5px;
 }
 
 #google {
