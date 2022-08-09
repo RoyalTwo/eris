@@ -14,7 +14,7 @@ dotenv.config();
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
-const PORT = 4705;
+const PORT = 4105;
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'))

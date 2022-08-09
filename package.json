@@ -1,11 +1,12 @@
 {
   "name": "eris",
   "version": "1.0.0",
-  "description": "",
+  "description": "A messaging app from scratch",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "start": "git pull && node server.js"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +23,13 @@
     "passport-google-oidc": "^0.1.0",
     "socket.io": "^4.5.1"
   },
-  "type": "module"
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoyalTwo/eris.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RoyalTwo/eris/issues"
+  },
+  "homepage": "https://github.com/RoyalTwo/eris#readme"
 }
