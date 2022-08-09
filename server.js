@@ -1,6 +1,7 @@
 import express from 'express';
+import fs from 'fs';
 import { Server } from 'socket.io';
-import { createServer } from 'http';
+import https from 'https';
 import loginRouter from './routes/auth.js';
 import indexRouter from './routes/index.js';
 import session from 'express-session';
@@ -11,10 +12,14 @@ import { registerSerial } from './serializing.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
+const options = {
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.cert')
+}
 const app = express();
-const httpServer = createServer(app);
-const io = new Server(httpServer);
-const PORT = 4705;
+const httpsServer = https.createServer(options, app);
+const io = new Server(httpsServer);
+const PORT = 4105;
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'))
@@ -36,6 +41,6 @@ io.on('connection', (socket) => {
     console.log('Client connected!');
 })
 
-httpServer.listen(PORT, () => {
+httpsServer.listen(PORT, () => {
     console.log(`Listening on port ${PORT}.`);
 })
