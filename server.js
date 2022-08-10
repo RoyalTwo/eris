@@ -8,6 +8,8 @@ import MongoStore from 'connect-mongo';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
+// NEED TO IMPLEMENT SECURITY
+
 const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer);

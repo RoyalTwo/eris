@@ -5,26 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../signup/signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <script src="../signup/signup.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    "yooo sign up"
-    <h1>Sign up</h1>
-<form action="/login/signup" method="post">
-    <section>
-        <label for="email">email</label>
-        <input id="email" name="email" type="text" autocomplete="email" required>
-    </section>
-    <section>
-        <label for="username">username</label>
-        <input id="username" name="username" type="text" autocomplete="username" required>
-    </section>
-    <section>
-        <label for="new-password">Password</label>
-        <input id="new-password" name="password" type="password" autocomplete="new-password" required>
-    </section>
-    <button type="submit">Sign up</button>
-</form>
+    <h1 class="hero">Eris</h1>
+    <div class="container main">
+        <h2 class="secondary">Nice to meet you.</h3>
+            <div class="form-cont">
+                <form action="/login/signup" method="post">
+                    <div class="email">
+                        <p class="small">email</p>
+                        <section>
+                            <input id="email" name="email" type="text" autocomplete="email" class="accDetail" required autofocus>
+                        </section>
+                    </div>
+                    <div class="username">
+                        <p class="small">username</p>
+                        <section>
+                            <input id="username" name="username" type="text" class="accDetail" autocomplete="username" required>
+                        </section>
+                    </div>
+                    <div class="pass">
+                        <p class="small">password</p>
+                        <section>
+                            <input id="current-password" name="password" type="password" class="accDetail" autocomplete="current-password" required>
+                        </section>
+                    </div>
+                <button type="submit" class="signin">Sign up</button>
+            </form>
+            </div>
+        <a class="small register" href="/login">Log in</a>
+    </div>
+    <div class="container credits">
+        <a id="github" href="https://github.com/RoyalTwo/eris">
+            <img src="../assets/GitHub-Mark-32px.png">
+        </a>
+    </div>
 </body>
 </html>

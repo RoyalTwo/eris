@@ -1,0 +1,125 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../assets/background3.jpg');
+    background-color: aliceblue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 0px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.hero {
+    font-weight: 500;
+    font-size: 90px;
+    margin-top: -5px;
+    color: rgba(100, 44, 44, 0.75);
+
+}
+
+.secondary {
+    font-weight: 500;
+    font-size: 40px;
+    margin-top: -10px;
+    margin-left: 50px;
+    color: rgba(100, 44, 44, 0.75);
+}
+
+.small {
+    margin: 0px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(163, 70, 70, 0.75);
+}
+
+.email,
+.username {
+    margin-bottom: 15px;
+}
+
+.register {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: -70px;
+    margin-top: 70px;
+}
+
+.accDetail {
+    border: none;
+    border: 0px solid;
+    border-radius: 10px;
+    height: 60px;
+    width: 500px;
+    background-color: rgba(255, 238, 224, 0.3);
+    font-size: 30px;
+    font-family: 'Work Sans', sans-serif;
+    color: rgba(53, 23, 23, 0.75);
+    font-weight: 400;
+    padding-left: 25px;
+    transition: background-color 0.25s;
+}
+
+.accDetail:focus {
+    outline: solid 2px rgba(163, 70, 70, 0.75);
+    background-color: rgba(255, 238, 224, 0.5);
+}
+
+.container {
+    display: flex;
+    background-color: rgba(249, 211, 180, 0.5);
+    height: 600px;
+    width: 700px;
+    border: 0px solid;
+    border-radius: 3%;
+    box-shadow: 2.5px 4px 10px -1px rgba(154, 140, 128, 0.48);
+    justify-content: center;
+    align-items: center;
+}
+
+.signin {
+    height: 50px;
+    width: 100px;
+    margin-top: 25px;
+    margin-bottom: -25px;
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: rgba(225, 234, 192, 0.8);
+    color: rgba(100, 44, 44, 0.75);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    transition: box-shadow 0.25s;
+    box-shadow: 3px 3px 5px 1px rgba(180, 190, 145, 0.8);
+}
+
+.signin:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px 10px 3px rgba(166, 172, 144, 0.8);
+}
+
+.main {
+    flex-direction: column;
+    padding-bottom: 50px;
+}
+
+.credits {
+    height: 50px;
+    width: 75px;
+    margin-top: 50px;
+    border-radius: 10%;
+}
+
+.credits>a>img {
+    height: 25px;
+    width: 25px;
+    margin-bottom: -5px;
+}
