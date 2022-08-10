@@ -11,9 +11,10 @@ router.get('/home', auth.isAuth, (req, res) => {
     console.log(req.session.user);
     res.send('Home Page');
 })
-
+router.get('/logout', auth.isAuth, (req, res) => {
+    res.send('logadga')
+})
 router.post('/logout', auth.isAuth, (req, res, next) => {
-    res.send('log out');
 })
 
 export default router;
