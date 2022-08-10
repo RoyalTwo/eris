@@ -20,15 +20,12 @@ export function isAuth(req, res, next) {
 }
 
 export async function wrapperAuth(req, res, next) {
-    console.log(req.originalUrl);
     if (req.session.user) {
-        console.log('already logged');
         return res.redirect('/home');
     }
     const user = await authenticateUser(req);
     if (!user) {
         res.redirect('/login');
-        console.log('redirect failed')
         // send failure message?
     }
     else {
@@ -41,18 +38,14 @@ async function authenticateUser(req) {
     try {
         const foundUser = await User.findOne({ 'email': req.body.email }).exec();
         if (!foundUser) {
-            console.log('no user here!!!')
             return false;
         }
         else {
-            console.log(foundUser)
             const givenHashedPass = crypto.pbkdf2Sync(req.body.password, foundUser.salt, 310000, 32, 'sha256').toString('hex');
             if (!crypto.timingSafeEqual(Buffer.from(foundUser.hashed_password), Buffer.from(givenHashedPass))) {
-                console.log('password wrong')
                 return false;
             }
             else {
-                console.log('password right')
                 return foundUser;
             }
         }

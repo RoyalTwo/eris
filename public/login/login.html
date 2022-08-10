@@ -12,27 +12,32 @@
     <title>Login</title>
 </head>
 <body>
+    <h1 class="hero">Eris.</h1>
     <div class="container main">
-        <h2 class="hero">Eris</h3>
-        <a id="google" href="/login/auth/google">
-            <img src="../assets/g-logo.png">
-            <p>Sign in with Google</p>
-        </a>
+        <h2 class="secondary">sign in </h3>
+            <div class="form-cont">
+                <form action="/login/auth" method="post">
+                    <div class="email">
+                        <p class="small">email</p>
+                        <section>
+                            <input id="email" name="email" type="text" autocomplete="email" class="accDetail" required autofocus>
+                        </section>
+                    </div>
+                    <div class="pass">
+                        <p class="small">password</p>
+                        <section>
+                            <input id="current-password" name="password" type="password" class="accDetail" autocomplete="current-password" required>
+                        </section>
+                    </div>
+                <button type="submit" class="signin">Sign in</button>
+            </form>
+            </div>
+        <a class="small register" href="/login/signup">need an account?</a>
     </div>
     <div class="container credits">
         <a id="github" href="https://github.com/RoyalTwo/eris">
             <img src="../assets/GitHub-Mark-32px.png">
         </a>
     </div>
-    <h1>Sign in</h1>
-<form action="/login/auth" method="post">
-    <section>
-        <input id="email" name="email" type="text" autocomplete="email" required autofocus>
-    </section>
-    <section>
-        <input id="current-password" name="password" type="password" autocomplete="current-password" required>
-    </section>
-    <button type="submit">Sign in</button>
-</form>
 </body>
 </html>

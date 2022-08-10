@@ -8,7 +8,6 @@ router.get('/', auth.isAuth, (req, res) => {
 })
 
 router.get('/home', auth.isAuth, (req, res) => {
-    console.log(req.session.user);
     res.send('Home Page');
 })
 router.get('/logout', auth.isAuth, (req, res) => {
