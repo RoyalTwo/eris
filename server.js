@@ -13,7 +13,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const httpServer = http.createServer(credentials, app);
+const httpServer = http.createServer(app);
 const io = new Server(httpServer);
 const PORT = 4105;
 
