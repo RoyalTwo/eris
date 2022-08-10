@@ -5,10 +5,16 @@ const UserSchema = new Schema({
     id: {
         type: String,
     },
-    name: {
+    username: {
         type: String,
     },
     email: {
+        type: String,
+    },
+    hashed_password: {
+        type: String,
+    },
+    salt: {
         type: String,
     }
 })
