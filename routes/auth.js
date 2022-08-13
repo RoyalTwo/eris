@@ -85,8 +85,8 @@ router.post('/signup', async (req, res) => {
     const hashedPass = crypto.pbkdf2Sync(req.body.password, salt, 310000, 32, 'sha256').toString('hex');
     const newUser = new User({
         id: id,
-        username: req.body.username,
-        email: req.body.email,
+        username: String(req.body.username),
+        email: String(req.body.email),
         hashed_password: hashedPass,
         salt: salt
     });

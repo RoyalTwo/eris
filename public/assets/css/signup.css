@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url('../assets/background3.jpg');
+    background-image: url('../background3.png');
     background-color: aliceblue;
     color: white;
     display: flex;
