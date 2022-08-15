@@ -11,11 +11,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
     <div class="container" id="sidebar">
         <div id="dms">
-            <button class="profile">
+            <button id="0" class="profile" onclick="changeDM(this)" autofocus>
                  <img class="pfp" src="assets/1.png" alt="test profile pic">
                  <div class="dmtext">
                      <div class="dmname">Test Profile</div>
@@ -25,122 +26,20 @@
                  </div>
             </button>
             <div class="profilespacer"></div>
+            <button id="1" class="profile" onclick="changeDM(this)" autofocus>
+                <img class="pfp" src="assets/1.png" alt="test profile pic">
+                <div class="dmtext">
+                    <div class="dmname">Test Profile 2</div>
+                    <div class="dmstatus">
+                       <div class="statuspic"></div>
+                    </div>
+                </div>
+           </button>
+           <div class="profilespacer"></div>
         </div>
     </div>
     <div class="container" id="maincontent">
         <div id="messages">
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
-            <div class="messagerecieve">
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="textinfo">
-                    <div class="username">Test User</div>
-                    <div class="messagetext">Hey, this is a test message!</div>
-                </div>
-            </div>
         </div>
         <div id="messagebox">
             <input id="inputmessage">

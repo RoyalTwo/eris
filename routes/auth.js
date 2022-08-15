@@ -29,7 +29,7 @@ export async function wrapperAuth(req, res, next) {
         // send failure message?
     }
     else {
-        req.session.user = user;
+        req.session.user = { 'id': user.id, 'username': user.username, 'email': user.email, 'hashed_password': user.hashed_password };
         res.redirect('/home');
     }
 }

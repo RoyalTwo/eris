@@ -62,7 +62,7 @@ body {
     background-color: rgba(225, 225, 225, 0.5);
 }
 
-.profile:focus {
+.enableddm {
     background-color: rgba(225, 225, 225, 0.5);
 }
 
@@ -134,8 +134,18 @@ body {
 #inputmessage {
     flex-grow: 1;
     border: 0px solid;
-    background-color: rgba(231, 219, 212, 0.5);
+    background-color: rgba(255, 238, 224, 0.3);
     border-radius: 50px;
+    outline: none;
+    font-size: 30px;
+    font-family: 'Work Sans', sans-serif;
+    color: rgba(53, 23, 23, 0.75);
+    font-weight: 400;
+    padding-left: 25px;
+}
+
+#inputmessage:focus {
+    outline: solid 2px rgba(163, 70, 70, 0.75);
 }
 
 #sendbtn {
@@ -158,6 +168,7 @@ body {
 
 .messagerecieve:hover {
     background-color: rgba(225, 225, 225, 0.5);
+    border-radius: 35px;
 }
 
 .textinfo {
