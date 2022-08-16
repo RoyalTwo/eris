@@ -16,7 +16,13 @@ const UserSchema = new Schema({
     },
     salt: {
         type: String,
-    }
+    },
+    picURL: {
+        type: String,
+    },
+    dms: {
+        type: Array,
+    },
 })
 const User = Mongoose.model('User', UserSchema);
 export default User

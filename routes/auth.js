@@ -88,7 +88,9 @@ router.post('/signup', async (req, res) => {
         username: String(req.body.username),
         email: String(req.body.email),
         hashed_password: hashedPass,
-        salt: salt
+        salt: salt,
+        picURL: 'pfp.jpg',
+        dms: [],
     });
     await newUser.save();
     req.session.user = newUser;

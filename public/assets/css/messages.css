@@ -32,6 +32,8 @@ body {
 #sidebar {
     height: auto;
     width: 20%;
+    display: flex;
+    flex-direction: column;
 }
 
 #maincontent {
@@ -55,7 +57,10 @@ body {
     background: none;
     border: 0px solid;
     border-radius: 20px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
     transition: all 0.25s;
+    cursor: pointer;
 }
 
 .profile:hover {
@@ -94,18 +99,18 @@ body {
 .statuspic {
     height: 25px;
     width: 25px;
-    border: 2px solid rgb(72, 162, 72);
+    border: 0px solid;
     border-radius: 50%;
-    background-color: rgb(96, 216, 96);
-    box-shadow: 2px 2px 5px 1px rgba(163, 70, 70, 0.75);
+    background-color: rgb(4, 189, 4);
 }
 
-.profilespacer {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.spacer {
+    margin-left: 50%;
     height: 5px;
-    width: 100%;
-    background-color: rgba(68, 113, 84, 0.4);
+    width: 30px;
+    background-color: rgba(102, 166, 124, 0.4);
+    border: 0px solid;
+    border-radius: 5px;
 }
 
 
@@ -142,10 +147,25 @@ body {
     color: rgba(53, 23, 23, 0.75);
     font-weight: 400;
     padding-left: 25px;
+    transition: background-color 0.25s;
+}
+
+#inputmessage:hover {
+    background-color: rgba(255, 238, 224, 0.5);
 }
 
 #inputmessage:focus {
+    background-color: rgba(255, 238, 224, 0.5);
     outline: solid 2px rgba(163, 70, 70, 0.75);
+}
+
+.defbutton {
+    border-radius: 10px;
+    background-color: rgba(225, 234, 192, 0.8);
+    color: rgba(76, 35, 35, 0.75);
+    font-size: 24px;
+    transition: all 0.20s;
+    cursor: pointer;
 }
 
 #sendbtn {
@@ -157,18 +177,25 @@ body {
     background-color: rgba(225, 234, 192, 0.8);
     color: rgba(76, 35, 35, 0.75);
     font-size: 24px;
+    transition: all 0.25s;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px -5px rgba(99, 99, 99, 0.48);
+}
+
+#sendbtn:hover {
+    background-color: rgba(225, 234, 192, 1);
+    box-shadow: 4px 4px 10px 0px rgba(99, 99, 99, 0.48);
 }
 
 .messagerecieve {
     display: flex;
     border: 0px solid;
-    border-radius: 15px;
+    border-radius: 50px;
     transition: all 0.25s;
 }
 
 .messagerecieve:hover {
     background-color: rgba(225, 225, 225, 0.5);
-    border-radius: 35px;
 }
 
 .textinfo {
@@ -212,4 +239,80 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.nodms {
+    align-self: center;
+    justify-self: center;
+    font-weight: 500;
+    font-size: 32px;
+    color: rgba(57, 57, 57, 0.5);
+    margin-top: 35%;
+}
+
+
+
+/* Sidebar Bottom Section */
+
+#controls {
+    height: 50%;
+    width: auto;
+    display: flex;
+    gap: 30px;
+
+}
+
+#sidebarbottom {
+    height: 20%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.control.fa {
+    width: 125px;
+    height: 75px;
+    background-color: rgba(240, 80, 83, 0.5);
+    box-shadow: 4px 4px 10px -5px rgba(99, 99, 99, 0.48);
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+}
+
+.control:hover {
+    background-color: rgba(240, 80, 83, 0.6);
+    box-shadow: 4px 4px 10px -2.5px rgba(99, 99, 99, 0.48);
+}
+
+#profilecontrol {
+    font-family: 'Work Sans', sans-serif;
+    width: auto;
+    max-height: 100px;
+    justify-content: flex-start;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: rgba(167, 167, 167, 0.5);
+    display: flex;
+    font-weight: 600;
+}
+
+#userpfp {
+    border-color: rgba(255, 255, 255, 0.75);
+    max-height: 100px;
+    width: 100px;
+}
+
+#usercontainer {
+    font-size: 48px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-left: -25px;
 }

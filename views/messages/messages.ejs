@@ -11,35 +11,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
     <div class="container" id="sidebar">
         <div id="dms">
-            <button id="0" class="profile" onclick="changeDM(this)" autofocus>
-                 <img class="pfp" src="assets/1.png" alt="test profile pic">
-                 <div class="dmtext">
-                     <div class="dmname">Test Profile</div>
-                     <div class="dmstatus">
-                        <div class="statuspic"></div>
-                     </div>
-                 </div>
-            </button>
-            <div class="profilespacer"></div>
-            <button id="1" class="profile" onclick="changeDM(this)" autofocus>
-                <img class="pfp" src="assets/1.png" alt="test profile pic">
-                <div class="dmtext">
-                    <div class="dmname">Test Profile 2</div>
-                    <div class="dmstatus">
-                       <div class="statuspic"></div>
-                    </div>
+        </div>
+        <div id="sidebarbottom">
+            <div id="controls">
+                <div class="defbutton control fa fa-plus" id="addfriend"></div>
+                <div class="defbutton control fa fa-gear" id="settings"></div>
+            </div>
+            <div class="defbutton control fa" id="profilecontrol">
+                <img class="pfp" id="userpfp">
+                <div id="usercontainer">
+                    <div id="usertext">Royal</div>
+                    <div id="userstatus" class="statuspic"></div>
                 </div>
-           </button>
-           <div class="profilespacer"></div>
+            </div>
         </div>
     </div>
     <div class="container" id="maincontent">
         <div id="messages">
+            <div class="nodms">No prior DMs. Start a new conversation!</div>
         </div>
         <div id="messagebox">
             <input id="inputmessage">
