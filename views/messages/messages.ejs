@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages</title>
     <script src="assets/js/messages.js" defer></script>
+    <script src="assets/js/addFriend.js" defer></script>
     <link rel="stylesheet" href="assets/css/messages.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,13 +21,17 @@
         </div>
         <div id="sidebarbottom">
             <div id="controls">
+                <div id="addfriendmodal" class="container addfriendmodalenabled">
+                    <input id="addfriendinput" placeholder="Username">
+                    <button id="addfriendbutton" class="defbutton fa fa-plus"></button> 
+                </div>
                 <div class="defbutton control fa fa-plus" id="addfriend"></div>
                 <div class="defbutton control fa fa-gear" id="settings"></div>
             </div>
             <div class="defbutton control fa" id="profilecontrol">
                 <img class="pfp" id="userpfp">
                 <div id="usercontainer">
-                    <div id="usertext">Royal</div>
+                    <div id="usertext"></div>
                     <div id="userstatus" class="statuspic"></div>
                 </div>
             </div>

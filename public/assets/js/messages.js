@@ -5,6 +5,11 @@ const sendBtn = document.getElementById('sendbtn');
 const input = document.getElementById('inputmessage');
 const userProfile = document.getElementById('profilecontrol');
 const userPfp = document.getElementById('userpfp');
+const userName = document.getElementById('usertext');
+
+const addModalBtn = document.getElementById('addfriend');
+const addFriendModal = document.getElementById('addfriendmodal');
+
 let dmRoom;
 
 async function changeDM(btn) {
@@ -23,7 +28,6 @@ async function changeDM(btn) {
     btn.classList.add('enableddm');
 
     const messageDiv = document.getElementById('messages');
-    messageDiv.innerHTML = '';
     const response = await fetch('/loadMessages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -36,13 +40,27 @@ async function changeDM(btn) {
     catch (err) {
         loadedMsgs = [];
     }
-    loadedMsgs.forEach(msg => {
-        const newMsg = createMessage(msg);
-        messageList.appendChild(newMsg);
-    });
+    if (loadedMsgs.length > 0) {
+        messageDiv.innerHTML = '';
+        loadedMsgs.forEach(msg => {
+            const newMsg = createMessage(msg);
+            messageList.appendChild(newMsg);
+        });
+    }
+    else {
+        messageDiv.innerHTML = '<div class="nodms">No prior DMs. Start a new conversation!</div>';
+
+    }
     messageList.scrollTop = messageList.scrollHeight;
 }
 window.onload = async () => {
+    const user = await fetch('/getUser', {
+        method: 'GET',
+    });
+    const loadedUser = await user.json();
+    userPfp.setAttribute('src', `pfps/${loadedUser.picURL}`);
+    userName.textContent = loadedUser.username;
+
     const response = await fetch('/loadDMs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -53,11 +71,7 @@ window.onload = async () => {
         dmList.appendChild(newDm);
     })
 
-    const pfp = await fetch('/getPfp', {
-        method: 'GET',
-    });
-    const loadedPfp = await pfp.text();
-    userPfp.setAttribute('src', `pfps/${loadedPfp}`);
+
     const firstDm = document.getElementById('0');
     if (firstDm) {
         firstDm.classList.add('enableddm');
@@ -68,7 +82,7 @@ window.onload = async () => {
 
 sendBtn.addEventListener('click', async () => {
     if (input.value && dmRoom) {
-        const newMsg = input.value;
+        const newMsg = String(input.value);
         input.value = '';
         await fetch('/newMessage', {
             method: 'POST',
@@ -80,7 +94,7 @@ sendBtn.addEventListener('click', async () => {
 
 input.addEventListener('keypress', async (event) => {
     if (event.key == "Enter" && input.value && dmRoom) {
-        const newMsg = input.value;
+        const newMsg = String(input.value);
         input.value = '';
         await fetch('/newMessage', {
             method: 'POST',
@@ -91,8 +105,10 @@ input.addEventListener('keypress', async (event) => {
 })
 
 socket.on("dm_message", (msg, pfp) => {
-    if (messageList.firstChild.classList.contains('nodms')) {
-        messageList.removeChild(messageList.firstChild);
+    if (messageList.firstChild) {
+        if (messageList.firstChild.classList.contains('nodms')) {
+            messageList.removeChild(messageList.firstChild);
+        }
     }
     const info = { msg, pfp }
     const newMsg = createMessage(info);
@@ -155,3 +171,16 @@ function createDm(user, index) {
     dmName.textContent = user.username;
     return dmButton;
 }
+
+
+let addModalEnabled = false;
+addModalBtn.addEventListener('click', () => {
+    if (!addModalEnabled) {
+        addFriendModal.style.opacity = '1';
+        addModalEnabled = true;
+    }
+    else {
+        addFriendModal.style.opacity = '0';
+        addModalEnabled = false;
+    }
+})

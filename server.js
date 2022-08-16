@@ -76,7 +76,12 @@ app.post('/loadMessages', async (req, res) => {
 
 app.post('/loadRooms', async (req, res) => {
     const msgSession = req.session.user;
-    const allWithUser = await Room.findOne({ 'rooms': { $all: [msgSession.username, req.body.toDM] } });
+    let allWithUser = await Room.findOne({ 'names': { $all: [msgSession.username, req.body.toDM] } });
+    if (allWithUser == null || !allWithUser) {
+        const newRoom = new Room({ 'names': [msgSession.username, req.body.toDM] });
+        await newRoom.save();
+        allWithUser = newRoom;
+    }
     const room = allWithUser.names.join("")
     if (!room) {
         const newRoom = new Room({ 'names': [msgSession.username, req.body.toDM] });
@@ -97,16 +102,27 @@ app.post('/loadDMs', async (req, res) => {
     res.send(dms);
 })
 
-app.get('/getPfp', async (req, res) => {
+app.get('/getUser', async (req, res) => {
     const msgSession = req.session.user;
     const dbUser = await User.findOne({ 'username': msgSession.username, 'hashed_password': msgSession.hashed_password }).exec();
-    res.send(dbUser.picURL);
+    res.send({ 'username': dbUser.username, 'picURL': dbUser.picURL });
+})
+
+app.post('/addFriend', async (req, res) => {
+    const session = req.session.user;
+    const userToAdd = await User.findOne({ 'username': req.body.username });
+    if (!userToAdd) return res.send(false);
+
+    await User.updateOne({ 'username': session.username, 'hashed_password': session.hashed_password }, { $addToSet: { dms: req.body.username } }).exec();
+    await User.updateOne({ 'username': req.body.username }, { $addToSet: { dms: session.username } });
+    console.log('Added DM');
+    return res.send(true);
 })
 
 io.on("connection", (socket) => {
     socket.on("change_dm", (newDm) => {
         socket.join(`${newDm}`);
-    })
+    });
 });
 
 httpServer.listen(PORT, () => {

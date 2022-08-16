@@ -27,6 +27,8 @@ body {
     border: 0px solid;
     border-radius: 10px;
     box-shadow: 2.5px 4px 10px -1px rgba(99, 99, 99, 0.48);
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 #sidebar {
@@ -46,7 +48,8 @@ body {
 #dms {
     height: 80%;
     width: 100%;
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .profile {
@@ -162,10 +165,16 @@ body {
 .defbutton {
     border-radius: 10px;
     background-color: rgba(225, 234, 192, 0.8);
+    box-shadow: 3px 3px 5px 1px rgb(180 190 145 / 80%);
     color: rgba(76, 35, 35, 0.75);
     font-size: 24px;
     transition: all 0.20s;
     cursor: pointer;
+}
+
+.defbutton:hover {
+    background-color: rgba(225, 234, 192, 1);
+    box-shadow: 3px 3px 2.5px 3px rgb(180 190 145 / 80%);
 }
 
 #sendbtn {
@@ -179,12 +188,12 @@ body {
     font-size: 24px;
     transition: all 0.25s;
     cursor: pointer;
-    box-shadow: 4px 4px 10px -5px rgba(99, 99, 99, 0.48);
+    box-shadow: 3px 3px 5px 1px rgb(180 190 145 / 80%);
 }
 
 #sendbtn:hover {
     background-color: rgba(225, 234, 192, 1);
-    box-shadow: 4px 4px 10px 0px rgba(99, 99, 99, 0.48);
+    box-shadow: 3px 3px 2.5px 3px rgb(180 190 145 / 80%);
 }
 
 .messagerecieve {
@@ -263,12 +272,13 @@ body {
 }
 
 #sidebarbottom {
+    position: relative;
     height: 20%;
     width: auto;
     display: flex;
     flex-direction: column;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .control.fa {
@@ -307,7 +317,7 @@ body {
 }
 
 #usercontainer {
-    font-size: 48px;
+    font-size: 28px;
     height: 100%;
     width: 100%;
     display: flex;
@@ -315,4 +325,54 @@ body {
     justify-content: center;
     gap: 15px;
     margin-left: -25px;
+}
+
+#addfriendmodal {
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    opacity: 0;
+    margin-top: -110px;
+    background-color: rgba(240, 80, 83, 0.6);
+    box-shadow: 4px 4px 10px -2.5px rgba(99, 99, 99, 0.48);
+    padding: inherit;
+    left: 0px;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    transition: opacity 0.25s;
+}
+
+#addfriendinput {
+    height: 40%;
+    width: 70%;
+    border: 0px solid;
+    background-color: rgba(255, 238, 224, 0.3);
+    border-radius: 50px;
+    outline: none;
+    font-size: 30px;
+    font-family: 'Work Sans', sans-serif;
+    color: rgba(53, 23, 23, 0.75);
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.25s;
+}
+
+#addfriendinput:hover {
+    background-color: rgba(255, 238, 224, 0.5);
+}
+
+#addfriendinput:focus {
+    background-color: rgba(255, 238, 224, 0.5);
+}
+
+#addfriendinput::placeholder {
+    font-weight: 500;
+    opacity: 1;
+}
+
+
+#addfriendbutton {
+    height: 50%;
+    width: 20%;
 }
