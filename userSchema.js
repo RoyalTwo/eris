@@ -23,6 +23,9 @@ const UserSchema = new Schema({
     dms: {
         type: Array,
     },
+    sid: {
+        type: String,
+    },
 })
 const User = Mongoose.model('User', UserSchema);
 export default User

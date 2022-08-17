@@ -8,6 +8,8 @@ import MongoStore from 'connect-mongo';
 import User from './userSchema.js';
 import Message from './messageSchema.js';
 import Room from './roomSchema.js';
+import sharedsession from 'express-socket.io-session';
+import test from './socket/S_add_friend.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -15,6 +17,12 @@ const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer);
 const PORT = 4105;
+const expsession = session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL })
+});
 
 app.set('view engine', 'ejs');
 app.use(
@@ -24,12 +32,7 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static('public'))
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL })
-}))
+app.use(expsession);
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
@@ -119,10 +122,29 @@ app.post('/addFriend', async (req, res) => {
     return res.send(true);
 })
 
-io.on("connection", (socket) => {
+io.use(sharedsession(expsession, {
+    autoSave: true
+}));
+
+io.on("connection", async (socket) => {
+    // refactor POST requests to use this instead!
+    // initial setup of sid:
+    let socketUser = socket.handshake.session.user
+    await User.updateOne({ 'username': socketUser.username, 'hashed_password': socketUser.hashed_password }, { $set: { 'sid': socket.id } });
+    socketUser.sid = socket.id;
+
     socket.on("change_dm", (newDm) => {
         socket.join(`${newDm}`);
     });
+
+    socket.on("add_friend", async (toAdd) => {
+        // fix flashing on loading dms
+        const toAddUser = await User.findOne({ 'username': toAdd });
+        if (toAddUser == null) return;
+        const toAddSID = toAddUser.sid;
+        io.to(toAddSID).emit("update_dms");
+        io.to(socket.handshake.session.user.sid).emit("update_dms");
+    })
 });
 
 httpServer.listen(PORT, () => {
