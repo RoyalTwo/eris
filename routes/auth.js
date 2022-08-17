@@ -7,7 +7,7 @@ dotenv.config();
 
 
 // Authentication Code
-await Mongoose.connect(process.env.MONGO_URL);
+Mongoose.connect(process.env.MONGO_URL);
 const router = express.Router();
 
 export function isAuth(req, res, next) {
