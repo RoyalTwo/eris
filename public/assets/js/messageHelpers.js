@@ -67,6 +67,7 @@ function createDm(user, index) {
 async function renderDMs(selectedDMIndex) {
     const response = await fetch('/loadDMs');
     const loadedDMs = await response.json();
+    dmList.innerHTML = '';
     await loadedDMs.forEach((dm, index) => {
         const newDm = createDm(dm, index);
         if (selectedDMIndex) {

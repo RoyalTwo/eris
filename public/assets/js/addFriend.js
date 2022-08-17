@@ -5,7 +5,6 @@ socket.on("update_dms", async () => {
     console.log('Updating DMs...');
     const selectedDM = (document.querySelector('.enableddm'));
     const selectedDMIndex = selectedDM.getAttribute('id');
-    dmList.innerHTML = '';
 
     renderDMs(selectedDMIndex);
 })
