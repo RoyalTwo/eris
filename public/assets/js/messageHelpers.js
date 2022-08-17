@@ -15,7 +15,6 @@ function createMessage(col) {
     const msgUsername = document.createElement('div');
     const msgText = document.createElement('div');
 
-
     newMsg.classList.add('messagerecieve');
     pfp.classList.add('pfp');
     msgTextWrap.classList.add('textinfo');

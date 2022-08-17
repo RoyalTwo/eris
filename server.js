@@ -56,7 +56,6 @@ io.use(sharedsession(expsession, {
 }));
 
 io.on("connection", async (socket) => {
-    // refactor POST requests to use this instead!
     // initial setup of sid:
     let socketUser = socket.handshake.session.user
     await User.updateOne({ 'username': socketUser.username, 'hashed_password': socketUser.hashed_password }, { $set: { 'sid': socket.id } });
@@ -68,7 +67,6 @@ io.on("connection", async (socket) => {
 
     socket.on("add_friend", async (toAdd) => {
         // might have to reset socketUser in this function first?
-        // fix flashing on loading dms
         const toAddUser = await User.findOne({ 'username': toAdd });
         if (toAddUser == null || !toAddUser) return;
         const toAddSID = toAddUser.sid;
