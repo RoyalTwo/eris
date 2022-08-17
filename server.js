@@ -51,17 +51,6 @@ app.post('/newMessage', async (req, res) => {
     }
 })
 
-app.post('/addFriend', async (req, res) => {
-    const session = req.session.user;
-    const userToAdd = await User.findOne({ 'username': req.body.username });
-    if (!userToAdd) return res.send(false);
-
-    await User.updateOne({ 'username': session.username, 'hashed_password': session.hashed_password }, { $addToSet: { dms: req.body.username } }).exec();
-    await User.updateOne({ 'username': req.body.username }, { $addToSet: { dms: session.username } });
-    console.log('Added DM');
-    return res.send(true);
-})
-
 io.use(sharedsession(expsession, {
     autoSave: true
 }));
@@ -78,12 +67,19 @@ io.on("connection", async (socket) => {
     });
 
     socket.on("add_friend", async (toAdd) => {
+        // might have to reset socketUser in this function first?
         // fix flashing on loading dms
         const toAddUser = await User.findOne({ 'username': toAdd });
-        if (toAddUser == null) return;
+        if (toAddUser == null || !toAddUser) return;
         const toAddSID = toAddUser.sid;
         io.to(toAddSID).emit("update_dms");
         io.to(socket.handshake.session.user.sid).emit("update_dms");
+
+        // send update event
+        await User.updateOne({ 'username': socketUser.username, 'hashed_password': socketUser.hashed_password }, { $addToSet: { dms: toAddUser.username } }).exec();
+        await User.updateOne({ 'username': toAddUser.username }, { $addToSet: { dms: socketUser.username } });
+        console.log('Added DM');
+        io.to(socket.handshake.session.user.sid).emit("test_update", 'yo');
     })
 });
 

@@ -48,7 +48,7 @@ router.post('/loadRooms', async (req, res) => {
     return res.send(room);
 })
 
-router.post('/loadDMs', async (req, res) => {
+router.get('/loadDMs', async (req, res) => {
     const msgSession = req.session.user;
     const dbUser = await User.findOne({ 'username': msgSession.username, 'hashed_password': msgSession.hashed_password }).exec();
     let dms = []
