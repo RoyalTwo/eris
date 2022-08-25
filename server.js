@@ -67,17 +67,32 @@ io.on("connection", async (socket) => {
 
     socket.on("add_friend", async (toAdd) => {
         // might have to reset socketUser in this function first?
+        if (toAdd == socketUser.username) return;
         const toAddUser = await User.findOne({ 'username': toAdd });
-        if (toAddUser == null || !toAddUser) return;
+        if (toAddUser == null || !toAddUser) return; // should send error message
         const toAddSID = toAddUser.sid;
-        io.to(toAddSID).emit("update_dms");
-        io.to(socket.handshake.session.user.sid).emit("update_dms");
+        io.to(toAddSID).emit("friend_request", socket.handshake.session.user);
+
+        /* io.to(toAddSID).emit("update_dms");
+        io.to(socket.handshake.session.user.sid).emit("update_dms"); */
 
         // send update event
-        await User.updateOne({ 'username': socketUser.username, 'hashed_password': socketUser.hashed_password }, { $addToSet: { dms: toAddUser.username } }).exec();
+        /* await User.updateOne({ 'username': socketUser.username, 'hashed_password': socketUser.hashed_password }, { $addToSet: { dms: toAddUser.username } }).exec();
         await User.updateOne({ 'username': toAddUser.username }, { $addToSet: { dms: socketUser.username } });
+        console.log('Added DM'); */
+    })
+    socket.on("friend_response", async (recievedUser) => {
+        if (!recievedUser) {
+            // request denied
+            console.log('request denied')
+            return;
+        }
+        const sentUser = socket.handshake.session.user;
+        await User.updateOne({ 'username': recievedUser.username, 'hashed_password': recievedUser.hashed_password }, { $addToSet: { dms: sentUser.username } }).exec();
+        await User.updateOne({ 'username': sentUser.username, 'hashed_password': sentUser.hashed_password }, { $addToSet: { dms: recievedUser.username } });
         console.log('Added DM');
-        io.to(socket.handshake.session.user.sid).emit("test_update", 'yo');
+        io.to(recievedUser.sid).emit("update_dms");
+        io.to(sentUser.sid).emit("update_dms");
     })
 });
 

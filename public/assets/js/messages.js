@@ -101,11 +101,14 @@ socket.on("dm_message", (msg, pfp) => {
 
 let addModalEnabled = false;
 addModalBtn.addEventListener('click', () => {
+    // hide and unhide requestmodal too if shown
     if (!addModalEnabled) {
+        addFriendModal.style.height = '175px';
         addFriendModal.style.opacity = '1';
         addModalEnabled = true;
     }
     else {
+        addFriendModal.style.height = '0px';
         addFriendModal.style.opacity = '0';
         addModalEnabled = false;
     }
