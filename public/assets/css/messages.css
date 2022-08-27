@@ -329,23 +329,29 @@ body {
 }
 
 #addfriendmodal {
+    z-index: 2;
+    height: 0px;
+}
+
+#addfriendmodal,
+#reqfriendmodal {
     position: absolute;
-    height: 100px;
+    margin-top: -185px;
     width: 100%;
     opacity: 0;
-    margin-top: -110px;
-    background-color: rgba(240, 80, 83, 0.6);
+    background-color: rgba(218, 136, 129);
     box-shadow: 4px 4px 10px -2.5px rgba(99, 99, 99, 0.48);
     padding: inherit;
     left: 0px;
     align-items: center;
-    justify-content: center;
     gap: 15px;
     transition: opacity 0.25s;
+    transition: height 0.15s;
+    flex-direction: column;
 }
 
 #addfriendinput {
-    height: 40%;
+    height: 30%;
     width: 70%;
     border: 0px solid;
     background-color: rgba(255, 238, 224, 0.3);
@@ -372,8 +378,79 @@ body {
     opacity: 1;
 }
 
-
 #addfriendbutton {
-    height: 50%;
+    height: 40%;
     width: 20%;
+}
+
+#addfriendcontrols {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    gap: 15px;
+}
+
+#addfriendtext {
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: -25px;
+    font-size: 32px;
+    text-align: center;
+    color: rgba(47, 23, 23, 0.8);
+    font-weight: 500;
+}
+
+#reqfriendmodal {
+    height: 175px;
+    z-index: 1;
+    display: none;
+    padding-top: 25px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#reqfriendtext {
+    width: 100%;
+    font-size: 32px;
+    text-align: center;
+    color: rgba(47, 23, 23, 0.8);
+    font-weight: 500;
+}
+
+#reqfriendheader {
+    width: 100%;
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    color: rgba(47, 23, 23, 0.686);
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#reqfriendcontrols {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#acceptfriend,
+#rejectfriend {
+    max-width: 100px;
+    height: 50px;
+    font-size: 28px;
+
+    text-align: center;
+}
+
+#acceptfriend {
+    box-shadow: 3px 3px 2.5px 0px rgb(180 190 145 / 80%);
+    background-color: rgba(171, 255, 200, 0.75);
+}
+
+#rejectfriend {
+    box-shadow: 3px 3px 2.5px 0px rgba(228, 182, 182, 0.8);
+    background-color: rgb(253 194 194 / 80%);
 }

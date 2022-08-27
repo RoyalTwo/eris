@@ -18,9 +18,10 @@ body {
 }
 
 .hero {
-    font-weight: 500;
-    font-size: 90px;
-    margin-top: -5px;
+    font-weight: 700;
+    font-size: 120px;
+    margin-top: -50px;
+    margin-bottom: 25px;
     color: rgba(100, 44, 44, 0.75);
 
 }

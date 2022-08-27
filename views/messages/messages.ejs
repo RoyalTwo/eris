@@ -8,12 +8,13 @@
     <script src="assets/js/messages.js" defer></script>
     <script src="assets/js/messageHelpers.js" defer></script>
     <script src="assets/js/addFriend.js" defer></script>
+    <script src="https://kit.fontawesome.com/b1b01333f3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/messages.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -22,11 +23,24 @@
         </div>
         <div id="sidebarbottom">
             <div id="controls">
-                <div id="addfriendmodal" class="container addfriendmodalenabled">
-                    <input id="addfriendinput" placeholder="Username">
-                    <button id="addfriendbutton" class="defbutton fa fa-plus"></button> 
+                <div id="addfriendmodal" class="container">
+                    <div id="addfriendtext">Add DM</div>
+                    <div id="addfriendcontrols">
+                        <input id="addfriendinput" placeholder="Username">
+                        <button id="addfriendbutton" class="defbutton fa fa-plus"></button> 
+                    </div>
                 </div>
-                <div class="defbutton control fa fa-plus" id="addfriend"></div>
+                <div id="reqfriendmodal" class="container">
+                    <div id="reqfriendtext">
+                        <div id="reqfriendheader">DM Request</div>
+                        <div id="reqfriendsubheader"></div>
+                    </div>
+                    <div id="reqfriendcontrols">
+                        <div class="defbutton control fa fa-check" id="acceptfriend"></div>
+                        <div class="defbutton control fa fa-x" id="rejectfriend"></div>
+                    </div>
+                </div>
+                <div class="defbutton control fa fa-user-plus" id="addfriend"></div>
                 <div class="defbutton control fa fa-gear" id="settings"></div>
             </div>
             <div class="defbutton control fa" id="profilecontrol">
