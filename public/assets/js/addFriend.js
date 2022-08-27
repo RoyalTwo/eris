@@ -29,7 +29,6 @@ socket.on("friend_request", (requestUser) => {
         socket.emit('friend_response', false);
         reqFriendModal.style.opacity = '0';
     })
-    // hide modal
 })
 
 addBtn.addEventListener('click', async () => {
