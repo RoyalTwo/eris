@@ -72,6 +72,7 @@ async function renderDMs(selectedDMIndex) {
         if (selectedDMIndex) {
             if (index == selectedDMIndex) {
                 newDm.classList.add('enableddm');
+                newDm.click();
             }
         }
         dmList.appendChild(newDm);

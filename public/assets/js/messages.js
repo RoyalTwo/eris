@@ -12,8 +12,9 @@ const addFriendModal = document.getElementById('addfriendmodal');
 let dmRoom;
 
 async function changeDM(btn) {
-    // store dm to change to in variable on click
-    // REFACTOR 
+
+    // Refactor - value shouldn't come from query selecting, store in variable 
+
     const oldBtn = document.querySelector('.enableddm');
     const btnArray = Array.from(btn.childNodes);
     const dm = btnArray[1].innerText;
