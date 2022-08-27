@@ -12,6 +12,8 @@ const addFriendModal = document.getElementById('addfriendmodal');
 let dmRoom;
 
 async function changeDM(btn) {
+    // store dm to change to in variable on click
+    // REFACTOR 
     const oldBtn = document.querySelector('.enableddm');
     const btnArray = Array.from(btn.childNodes);
     const dm = btnArray[1].innerText;

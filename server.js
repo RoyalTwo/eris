@@ -43,8 +43,8 @@ app.post('/newMessage', async (req, res) => {
     const msgRoom = req.body.room;
     const dbUser = await User.findOne({ 'username': msgSession.username, 'hashed_password': msgSession.hashed_password }).exec();
     if (dbUser) {
-        // inefficient way to store messages; should store them IN rooms
-        // so you don't need to search entire message db
+        // VERY inefficient way to store messages; should store them IN rooms
+        // In fact, the whole database should be refactored
         const dbMsg = new Message({ username: dbUser.username, message: req.body.msg, room: req.body.room });
         io.to(msgRoom).emit("dm_message", dbMsg, dbUser.picURL);
         await dbMsg.save();
@@ -73,13 +73,6 @@ io.on("connection", async (socket) => {
         const toAddSID = toAddUser.sid;
         io.to(toAddSID).emit("friend_request", socket.handshake.session.user);
 
-        /* io.to(toAddSID).emit("update_dms");
-        io.to(socket.handshake.session.user.sid).emit("update_dms"); */
-
-        // send update event
-        /* await User.updateOne({ 'username': socketUser.username, 'hashed_password': socketUser.hashed_password }, { $addToSet: { dms: toAddUser.username } }).exec();
-        await User.updateOne({ 'username': toAddUser.username }, { $addToSet: { dms: socketUser.username } });
-        console.log('Added DM'); */
     })
     socket.on("friend_response", async (recievedUser) => {
         if (!recievedUser) {
