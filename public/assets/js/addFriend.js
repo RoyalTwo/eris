@@ -1,6 +1,7 @@
 const addBtn = document.getElementById('addfriendbutton');
 const addInput = document.getElementById('addfriendinput');
 const reqFriendModal = document.getElementById('reqfriendmodal');
+const reqName = document.getElementById('reqfriendsubheader');
 const reqAdd = document.getElementById('acceptfriend');
 const reqDeny = document.getElementById('rejectfriend');
 
@@ -16,6 +17,7 @@ socket.on("update_dms", async () => {
 
 socket.on("friend_request", (requestUser) => {
     // display modal with friend request
+    reqName.textContent = requestUser.username;
     reqFriendModal.style.opacity = '1';
     reqFriendModal.style.display = "flex";
     console.log('client to add');

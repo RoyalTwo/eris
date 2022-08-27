@@ -76,7 +76,6 @@ io.on("connection", async (socket) => {
     })
     socket.on("friend_response", async (recievedUser) => {
         if (!recievedUser) {
-            // request denied
             console.log('request denied')
             return;
         }
