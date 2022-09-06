@@ -1,5 +1,5 @@
 <ins> **ARCHIVED** </ins>
-## Poorly structured and hard to scale, new version being worked on using React :D
+## New version being worked on with React, this version has a number of issues :D
 
 ### Eris
 A messaging app from scratch
