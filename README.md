@@ -1,4 +1,4 @@
-# <ins> ARCHIVED </ins>
+<ins> **ARCHIVED** </ins>
 ## Poorly structured and hard to scale, new version being worked on using React :D
 
 ### Eris
